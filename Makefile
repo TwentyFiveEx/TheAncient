@@ -1,7 +1,7 @@
 .PHONY: build push build-test test clean
 
 IMAGE_TEST := theancient-test
-IMAGE_NAME := theancient
+IMAGE_NAME := theburb/theancient
 IMAGE_TAG := $(shell git rev-parse --short=7 HEAD)
 
 LOG_LEVEL := "INFO"
