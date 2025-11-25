@@ -1,33 +1,33 @@
 FROM python:3.13.9-slim
 
 # Runtime Environment Name
-ARG ancient_env="Development"
+ARG ancient_env="Production"
 # Discord bot install URL
 ARG ancient_installurl=""
 # Bot default logging level
-ARG ancient_loglevel="DEBUG"
+ARG ancient_loglevel="INFO"
 # Discord bot token
-ARG ancient_token="foobarbaz"
+#ARG ancient_token
 # Bot chat trigger
 ARG ancient_trigger="\!"
 # Steam API cache ttl
 ARG steam_api_ttl="20"
 # Steam game id for API calls
-ARG steam_appid="3922240"
+ARG steam_appid="3401450"
 # Steam API Token
-ARG steam_token="foobarbaz"
+#ARG steam_token
 
 ENV LC_ALL=en_US.utf8
 ENV LANG=en_US.utf8
 
-ENV ANCIENT_ENV="$(ancient_env)"
-ENV ANCIENT_INSTALLURL="$(ancient_installurl)"
-ENV ANCIENT_LOGLEVEL="$(ancient_loglevel)"
-ENV ANCIENT_TOKEN="$(ancient_token)"
-ENV ANCIENT_TRIGGER='$(ancient_trigger)'
-ENV STEAM_API_TTL="$(steam_api_ttl)"
-ENV STEAM_APPID="$(steam_appid)"
-ENV STEAM_TOKEN="$(steam_token)"
+ENV ANCIENT_ENV="${ancient_env}"
+ENV ANCIENT_INSTALLURL="${ancient_installurl}"
+ENV ANCIENT_LOGLEVEL="${ancient_loglevel}"
+#ENV ANCIENT_TOKEN="${ancient_token}"
+ENV ANCIENT_TRIGGER='${ancient_trigger}'
+ENV STEAM_API_TTL="${steam_api_ttl}"
+ENV STEAM_APPID="${steam_appid}"
+#ENV STEAM_TOKEN="${steam_token}"
 
 WORKDIR /theancient
 
@@ -40,10 +40,12 @@ COPY /theancient/botcommands/timezones.py ./botcommands/
 COPY requirements.txt ./
 
 RUN pip install --upgrade pip setuptools tox
-RUN --mount=type=secret,id=steamtoken \
-    env=STEAM_TOKEN \
-    --mount=type=secret,id=discordtoken \
-    env=ANCIENT_TOKEN \
-    pip install --no-cache-dir -r requirements.txt
+RUN --mount=type=secret,id=STEAM_TOKEN,env=STEAM_TOKEN \
+    --mount=type=secret,id=ANCIENT_TOKEN,env=ANCIENT_TOKEN \
+    pip install --no-cache-dir -r requirements.txt 
+CMD [ "python", "/theancient/theancient.py" ]
+
+#RUN python3 setup.py install
+#CMD /usr/local/bin/theancient
 
 CMD [ "tox" ]
