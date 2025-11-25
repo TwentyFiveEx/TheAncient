@@ -19,7 +19,7 @@ Run the Docker container by passing env vars on the command line.
 ```
 $ export ANCIENT_TOKEN="your_discord_bot_token"
 $ export STEAM_TOKEN="your steam api token"
-$ docker run -e "ANCIENT_TOKEN=${ANCIENT_TOKEN}" -e "STEAM_TOKEN=${STEAM_TOKEN}" --rm -it theancient:latest
+$ docker run -e "ANCIENT_TOKEN=${ANCIENT_TOKEN}" -e "STEAM_TOKEN=${STEAM_TOKEN}" --rm -it theburb/theancient:latest
 ```
 If you are running Windows, you may need to put "winptr" in front of the docker run command: "winpty docker run ...".
 
@@ -31,12 +31,8 @@ $ docker run --env-file ./env.file --rm -it theancient:latest
 ```
 
 Add the bot to a Discord server. For instance, with the bot installation URL found in the Discord developer interface.
-Example, where NNNN is the bot id:
+Example, where NNNN is the bot id associated with ANCIENT_TOKEN above.
 * https://discord.com/oauth2/authorize?client_id=NNNN&permissions=0&integration_type=0&scope=bot+applications.commands
-You can debug a live image by changing the run command above to use "sh" instead.
-```
-$ docker run --env-file ./env.file --rm -it --entrypoint sh theancient:latest
-```
 
 ## Requirements
 * Python3.x
