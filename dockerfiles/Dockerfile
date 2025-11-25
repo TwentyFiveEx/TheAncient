@@ -9,7 +9,7 @@ ARG ancient_loglevel="INFO"
 # Discord bot token
 #ARG ancient_token
 # Bot chat trigger
-ARG ancient_trigger="\!"
+ARG ancient_trigger='!'
 # Steam API cache ttl
 ARG steam_api_ttl="20"
 # Steam game id for API calls
@@ -24,7 +24,7 @@ ENV ANCIENT_ENV="${ancient_env}"
 ENV ANCIENT_INSTALLURL="${ancient_installurl}"
 ENV ANCIENT_LOGLEVEL="${ancient_loglevel}"
 #ENV ANCIENT_TOKEN="${ancient_token}"
-ENV ANCIENT_TRIGGER='${ancient_trigger}'
+ENV ANCIENT_TRIGGER="${ancient_trigger}"
 ENV STEAM_API_TTL="${steam_api_ttl}"
 ENV STEAM_APPID="${steam_appid}"
 #ENV STEAM_TOKEN="${steam_token}"
