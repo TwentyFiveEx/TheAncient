@@ -48,8 +48,13 @@ something else.
 For contributing to the bot, please see the [development documentation](theancient/docs/devel.md).
 
 ## TODO
-I have a lot of documentation gaps that I need to fill in. This includes documenting the code fully.
-I also have a lot to do in the space of adding tests to the code. I know, I know.. add tests while you code. Well, I didn't. It's fine. This started as a 2 line bash script so, here we are.
+I have a lot of documentation gaps that I need to fill in. This includes documenting the code fully.  
+I also have a lot to do in the space of adding tests to the code. I know, I know.. add tests while you code. Well, I didn't. It's fine. This started as a 2 line bash script so, here we are. There's a number of bits including finishing the setup.py binary builder and making sure that works properly, then swapping that in for the python ./foo.py launch method. Plenty to do. ALso I have some command modules cooking:
+- Trivia
+- Wiki lookups
+- Bot-based Queue System
+- Queue system metrics output (by region, activity, etc)
+- Karma system for recognizing stellar teammates
 
 ## About the Author
 I'm Burb. I'm located in Southwestern United States. I'm into hiking, gaming, tiny electronics, large scale system architecture, software development lifecycles, gardening, and being a friend to backyard birds.
