@@ -23,7 +23,6 @@ TODO: Expand on tests
 TODO: Expand on testing variables
 
 ## Contributing
-TODO: Contributing expectations
-TODO: Push back to fork steps
-TODO: Pull requests back to main code
-
+TODO: Contributing expectations  
+TODO: Push back to fork steps  
+TODO: Pull requests back to main code  

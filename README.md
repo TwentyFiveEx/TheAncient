@@ -9,8 +9,8 @@ The bot can be deployed as portable python3 code or as a (Docker) container inst
 The bot is currently designed as a monolithic endpoint, listening for incoming requests from Discord and acting on those requests. Multiple instances of the bot will result in multiple concurrent responses at this time. In the event this bot grows to a large enough request volume that multiple parallel instances are needed, the code should be converted to use sharding which is a simple exercise but [comes with many caveats](https://guide.pycord.dev/popular-topics/sharding).
 
 ## Quick Start
-TODO: Expand on getting tokens
-TODO: Maybe expand on getting docker?
+TODO: Expand on getting tokens  
+TODO: Maybe expand on getting docker?  
 You will need the following to do anything meaningful with the bot. 
 - Discord Bot Token
 - Steam API Token
@@ -21,7 +21,8 @@ $ export ANCIENT_TOKEN="your_discord_bot_token"
 $ export STEAM_TOKEN="your steam api token"
 $ docker run -e "ANCIENT_TOKEN=${ANCIENT_TOKEN}" -e "STEAM_TOKEN=${STEAM_TOKEN}" --rm -it theburb/theancient:latest
 ```
-If you are running Windows, you may need to put "winptr" in front of the docker run command: "winpty docker run ...".
+If you are running Windows, you may need to put "winptr" in front of the docker  
+run command: "winpty docker run ...".
 
 Alternatively, you can pass your token secrets through an env file.
 ```
@@ -35,10 +36,10 @@ Example, where NNNN is the bot id associated with ANCIENT_TOKEN above.
 * https://discord.com/oauth2/authorize?client_id=NNNN&permissions=0&integration_type=0&scope=bot+applications.commands
 
 ## Requirements
-* Python3.x
+* Python =>3.13
 
 ## Contributing
-For contributing to the bot, please see the [development documentation](docs/devel.md).
+For contributing to the bot, please see the [development documentation](theancient/docs/devel.md).
 
 ## TODO
 I have a lot of documentation gaps that I need to fill in. This includes documenting the code fully.
