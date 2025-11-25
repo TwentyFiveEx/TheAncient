@@ -31,12 +31,18 @@ $ echo 'STEAM_TOKEN="your steam api token"' >> env.file
 $ docker run --env-file ./env.file --rm -it theburb/theancient:latest
 ```
 
-Add the bot to a Discord server. For instance, with the bot installation URL found in the Discord developer interface.
-Example, where NNNN is the bot id associated with ANCIENT_TOKEN above.
+Add the bot to a Discord server. For instance, with the bot installation URL  
+found in the Discord developer interface. Example, where NNNN is the bot id  
+associated with ANCIENT_TOKEN above.
 * https://discord.com/oauth2/authorize?client_id=NNNN&permissions=0&integration_type=0&scope=bot+applications.commands
 
 ## Requirements
 * Python =>3.13
+
+Please be aware this code comes with zero guarantees that this code will work. I
+tried to pick a generally acceptible, open, and simple python image for the 
+container image but if you want something more robust, replace it with 
+something else.
 
 ## Contributing
 For contributing to the bot, please see the [development documentation](theancient/docs/devel.md).
