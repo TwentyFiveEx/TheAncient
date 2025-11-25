@@ -27,7 +27,7 @@ Alternatively, you can pass your token secrets through an env file.
 ```
 $ echo 'ANCIENT_TOKEN="your_discord_bot_token"' > env.file
 $ echo 'STEAM_TOKEN="your steam api token"' >> env.file
-$ docker run --env-file ./env.file --rm -it theancient:latest
+$ docker run --env-file ./env.file --rm -it theburb/theancient:latest
 ```
 
 Add the bot to a Discord server. For instance, with the bot installation URL found in the Discord developer interface.
