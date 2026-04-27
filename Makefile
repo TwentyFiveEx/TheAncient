@@ -30,16 +30,16 @@ build-test:
 	@docker build -t $(IMAGE_TEST) -f dockerfiles/Dockerfile.test .
 
 test: build-test
-@docker run -e "ANCIENT_TOKEN=${ANCIENT_TOKEN}" -e "STEAM_TOKEN=${STEAM_TOKEN}" --rm $(IMAGE_TEST)
+	@docker run -e "ANCIENT_TOKEN=${ANCIENT_TOKEN}" -e "STEAM_TOKEN=${STEAM_TOKEN}" --rm $(IMAGE_TEST)
 
 debug-test:
-@docker run -it --secret id=steamtoken,env=STEAM_TOKEN --secret id=discordtoken,env=ANCIENT_TOKEN -e LOG_LEVEL=$(LOG_LEVEL) --rm $(IMAGE_TEST) bash
+	@docker run -it --secret id=steamtoken,env=STEAM_TOKEN --secret id=discordtoken,env=ANCIENT_TOKEN -e LOG_LEVEL=$(LOG_LEVEL) --rm $(IMAGE_TEST) bash
 
 debug-build:
-@docker run -it --secret id=steamtoken,env=STEAM_TOKEN --secret id=discordtoken,env=ANCIENT_TOKEN -e LOG_LEVEL=$(LOG_LEVEL) --rm $(IMAGE_NAME):$(IMAGE_TAG) bash
+	@docker run -it --secret id=steamtoken,env=STEAM_TOKEN --secret id=discordtoken,env=ANCIENT_TOKEN -e LOG_LEVEL=$(LOG_LEVEL) --rm $(IMAGE_NAME):$(IMAGE_TAG) bash
 
 run:
-@docker run -it --secret id=steamtoken,env=STEAM_TOKEN --secret id=discordtoken,env=ANCIENT_TOKEN -e LOG_LEVEL=$(LOG_LEVEL) --rm $(IMAGE_NAME):$(IMAGE_TAG)
+	@docker run -it --secret id=steamtoken,env=STEAM_TOKEN --secret id=discordtoken,env=ANCIENT_TOKEN -e LOG_LEVEL=$(LOG_LEVEL) --rm $(IMAGE_NAME):$(IMAGE_TAG)
 
 clean:
 	@rm -rf .tox .eggs theancient.egg-info build .pytest_cache
