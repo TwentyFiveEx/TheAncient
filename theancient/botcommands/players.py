@@ -42,7 +42,7 @@ class Players(commands.Cog, name="players"):
     seconds = int(seconds)
     return round(time.time() / seconds)
 
-  def get_current_players(self, token=steam_token(), appid):
+  def get_current_players(self, appid, token=steam_token()):
     return self.get_current_lc(token, 
                             appid,
                             ttl=self.ttl_hash(steam_apittl())
@@ -51,7 +51,7 @@ class Players(commands.Cog, name="players"):
   def get_steamplayers(self, echo_whispers):
     players_total = int(0)
     for appid in steam_appid().split(","):
-      players = int(self.get_current_players(steam_token(), appid) or 0)
+      players = int(self.get_current_players(appid, steam_token()) or 0)
       players_total = int(players_total) + int(players)
 
     else:
@@ -65,7 +65,8 @@ class Players(commands.Cog, name="players"):
       secret_saying = f"\u001b[1;30m{secrets.choice(echo_whispers)}\u001b[0m"
     self.log.debug(f"Players API cache: {self.get_current_lc.cache_info()}")
     return f"{ansistart}There are now, {players_total} players logged into " \
-           f"Arkheron.\n{secret_saying}{ansiend}"
+           f"Arkheron. (SteamID: {', '.join(steam_appid().split(','))})"\
+           f"\n{secret_saying}{ansiend}"
 
   @commands.Cog.listener()
   async def on_ready(self):
