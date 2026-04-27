@@ -1,0 +1,22 @@
+# Changelog
+
+Notable changes should be documented here.
+
+Using [Maj.Min.Patch] - yyyy-mm-dd to designate change segments
+
+## [0.1.1] - 2026-04-27
+
+### Added
+- Added CHANGELOG.md to track changes
+
+### Changed
+- Bot version is now configurable with env var: ANCIENT_VERSION
+- Bot settings version is now configuration with env var: 
+  ANCIENT_SETTINGS_VERSION  
+- Support multiple Steam Application IDs in STEAM_APPID, if comma delimited
+
+### Removed
+- n/a
+
+### Fixed
+- n/a

@@ -2,35 +2,37 @@ import os
 import discord
 
 def release_version() -> str:
-  ''' Returns the major.minor.patch bot code version
+  ''' Returns the major.minor.patch bot code version from env var:
+      ANCIENT_VERSION
       Type: (str)
   '''
-  return "v0.1.0"
+  return str(os.getenv('ANCIENT_VERSION','0.1.1'))
 
 def settings_version():
-  ''' Returns the major.minor.patch settings version
-     Type: (str)
+  ''' Returns the major.minor.patch settings version from env var:
+      ANCIENT_SETTINGS_VERSION
+      Type: (str)
   '''
-  return "v0.1.0"
+  return str(os.getenv('ANCIENT_SETTINGS_VERSION','0.1.1'))
 
 def log_level():
   ''' Returns from env var: ANCIENT_LOGLEVEL
-     Defaults to: INFO
-     Type: (str)
+      Defaults to: INFO
+      Type: (str)
   ''' 
   return str(os.getenv('ANCIENT_LOGLEVEL', 'INFO').upper())
 
 def bot_trigger():
   ''' Return the chat command trigger from env var: ANCIENT_TRIGGER
-     Defaults to: '/'
-     Type: (str) 
+      Defaults to: '/'
+      Type: (str) 
   '''
   return os.getenv('ANCIENT_TRIGGER', '/')
 
 def bot_runenv():
   ''' Return the runtime environment level from env var: ANCIENT_ENV
-     Defaults to: 'Production'
-     Type: (str)
+      Defaults to: 'Production'
+      Type: (str)
   '''
   return str(os.getenv('ANCIENT_ENV', 'Production'))
 
@@ -67,13 +69,13 @@ def steam_apittl():
 
 def quotesdb():
   ''' Returns the quotes API endpoint url
-     Type: (str)
+      Type: (str)
   '''
   return "https://quotes.alakhpc.com/quotes/1"
 
 def tzlist():
   ''' Returns timezones of interest
-     Type: (list)
+      Type: (list)
   ''' 
   tzlist = [ 'America/Los_Angeles',
              'America/Phoenix',
@@ -91,7 +93,7 @@ def tzlist():
 
 def echo_whispers():
   ''' Returns responses influenced by The Ancient
-     Type: (list)
+      Type: (list)
   '''
   echo_whispers = [ 'Get to a beacon.',
                     'The tower calls to you.',
