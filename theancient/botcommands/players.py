@@ -42,27 +42,29 @@ class Players(commands.Cog, name="players"):
     seconds = int(seconds)
     return round(time.time() / seconds)
 
-  def get_current_players(self, token=steam_token(), appid=steam_appid()):
+  def get_current_players(self, token=steam_token(), appid):
     return self.get_current_lc(token, 
                             appid,
                             ttl=self.ttl_hash(steam_apittl())
                             )
 
   def get_steamplayers(self, echo_whispers):
-    players = int(self.get_current_players(steam_token(), steam_appid()))
-    if players is None:
-      return None
+    players_total = int(0)
+    for appid in steam_appid().split(","):
+      players = int(self.get_current_players(steam_token(), appid) or 0)
+      players_total = int(players_total) + int(players)
+
     else:
       ansistart = f"```ansi\n"
       ansiend = "```"
       # 31:red, 32:green, 33:yellow
-      players_color = "31" if players <= 28 else "32" if players > 40 else "33" 
+      players_color = "31" if players_total <= 28 else "32" if players_total > 40 else "33" 
       # 0:normal, 1:Bold, 2:Underline
       players_format = "0" 
-      players = f"\u001b[{players_format};{players_color}m{players}\u001b[0m"
+      players = f"\u001b[{players_format};{players_color}m{players_total}\u001b[0m"
       secret_saying = f"\u001b[1;30m{secrets.choice(echo_whispers)}\u001b[0m"
     self.log.debug(f"Players API cache: {self.get_current_lc.cache_info()}")
-    return f"{ansistart}There are now, {players} players logged into " \
+    return f"{ansistart}There are now, {players_total} players logged into " \
            f"Arkheron.\n{secret_saying}{ansiend}"
 
   @commands.Cog.listener()
